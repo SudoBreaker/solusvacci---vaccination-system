@@ -1,0 +1,361 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    /* overflow: hidden; */
+  }
+  
+  ul{
+    list-style: none;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  
+  header{
+    position: sticky;
+    top: 0px;
+    background-image: linear-gradient(to right,#0990d3,#ff1464);
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  section{
+    position: relative;
+    height: calc(100vh - 3rem);
+    width: 100%;
+    background: url('../images/virus.svg') no-repeat top center / cover;
+    overflow: hidden;
+  }
+  
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgb(56, 165, 238,0.5);
+  }
+  
+  .container{
+    max-width: 65rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+  }
+  
+  .logo-container{
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-btn{
+    flex: 3;
+    display: flex;
+  }
+  
+  .nav-links{
+    flex: 2;
+  }
+  
+  .log-sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .logo{
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 3rem;
+  }
+  
+  .logo span{
+    font-weight: 300;
+  }
+  
+  .btn{
+    display: inline-block;
+    padding: .5rem 1.3rem;
+    font-size: .8rem;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    line-height: 1;
+    margin: 0 .2rem;
+    transition: .3s;
+    text-transform: uppercase;
+  }
+  
+  .btn.solid, .btn.transparent:hover{
+    background-color: #fff;
+    color: #69bde7;
+  }
+  
+  .btn.transparent, .btn.solid:hover{
+    background-color: transparent;
+    color: #fff;
+  }
+  
+  .nav-links > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    margin:0;
+  }
+  
+  .nav-links > ul > li{
+    padding: 0;
+  }
+  
+  .nav-link > a{
+    line-height: 3rem;
+    color: #fff;
+    padding: 0 .8rem;
+    letter-spacing: 1px;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .5s;
+  }
+  
+  .nav-link > a > i{
+    margin-left: .2rem;
+  }
+  
+  .nav-link:hover > a{
+    transform: scale(1.1);
+  }
+  
+  .hamburger-menu-container{
+    flex: 1;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .hamburger-menu{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hamburger-menu div{
+    width: 1.6rem;
+    height: 3px;
+    border-radius: 3px;
+    background: #fff;
+    position: relative;
+    z-index: 1001;
+    transition: .5s;
+  }
+  
+  .hamburger-menu div:before,
+  .hamburger-menu div:after{
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: #fff;
+    border-radius: 3px;
+  }
+  
+  .hamburger-menu div:before{
+    transform: translateY(-7px);
+  }
+  
+  .hamburger-menu div:after{
+    transform: translateY(7px);
+  }
+  
+  #check {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 90000;
+    cursor: pointer;
+    opacity: 0;
+    display: none;
+  }
+  
+  #check:checked ~ .hamburger-menu-container .hamburger-menu div{
+    background-color: transparent;
+  }
+  
+  #check:checked ~ .hamburger-menu-container .hamburger-menu div:before{
+    transform: translateY(0) rotate(-45deg);
+  }
+  
+  #check:checked ~ .hamburger-menu-container .hamburger-menu div:after{
+    transform: translateY(0) rotate(45deg);
+  }
+  
+  @keyframes animation{
+    from{
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  
+  
+  @media (max-width: 920px){
+    .hamburger-menu-container{
+      display: flex;
+    }
+  
+    #check{
+      display: block;
+    }
+  
+    .nav-btn{
+      position: fixed;
+      height: calc(100vh - 3rem);
+      top: 3rem;
+      left: 0;
+      width: 100%;
+      background-color: #69bde7;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      overflow-x: hidden;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: .65s;
+    }
+  
+    #check:checked ~ .nav-btn{
+      transform: translateX(0);
+    }
+  
+    #check:checked ~ .nav-btn .nav-link,
+    #check:checked ~  .nav-btn .log-sign{
+      animation: animation .5s ease forwards var(--i);
+    }
+  
+    .nav-links{
+      flex: initial;
+      width: 100%;
+    }
+  
+    .nav-links > ul{
+      flex-direction: column;
+    }
+    .nav-link{
+      width: 100%;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+  
+    .nav-link > a{
+      line-height: 1;
+      padding: 1.6rem 2rem;
+    }
+  
+    .nav-link:hover > a{
+      transform: scale(1);
+      background-color: #50a9d6;
+    }
+  
+    .nav-link > a > i{
+      font-size: 1.1rem;
+      transform: rotate(-90deg);
+      transition: .7s;
+    }
+  
+    .log-sign{
+      flex: initial;
+      width: 100%;
+      padding: 1.5rem 1.9rem;
+      justify-content: flex-start;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+  }
+  
+  
+  /* login form */
+  
+  /* .login {
+    margin: 100px 400px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login h2{
+    padding: 15px;
+  }
+
+  .login button{
+    height: 100%;
+    width: 112%;
+    outline: none;
+  }
+
+  .login-form input, .login-form button,.login p{
+    margin: 5px;
+  } */
+
+  /* signup form */
+
+  p.error {
+    color: red;
+  }
+
+  p.success {
+    color: green;
+  }
+  
+  /* .signup-container{
+    margin: auto 300px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup-container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  form .user-details .input-box{
+    width: calc(100% / 2 - 20px);
+  }
+
+  .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+  }
+
+  .signup-container form .button{
+    margin: 20px auto;
+    height: 100%;
+    width: 100%;
+    outline: none;
+  } */
+  
+  
